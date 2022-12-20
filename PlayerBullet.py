@@ -10,30 +10,43 @@ import numpy as np
 white = (255, 255, 255)
 black = (0, 0, 0)
 
+#rainbow color variables
+ang = 0
 red = 0
 green = 0
 blue = 0
 
 #"rainbow" color
-ang= ang + np.pi/360
-red=(math.cos(ang)+1)/2*255
-blue=(math.sin(ang)+1)/2*255
-green=((math.cos(ang))*(math.sin(ang))+1)/2*255
-Color=(red, green, blue)
+ang += np.pi / 360
+red = (math.cos(ang) + 1) / 2 * 255
+blue = (math.sin(ang) + 1) / 2 * 255
+green = ((math.cos(ang)) * (math.sin(ang)) + 1) / 2 * 255
+Color = (red, green, blue)
+
+#keep rainbow looping
+if (red > 255):
+        red = 0
+    if (green > 255):
+        green = 0
+    if (blue > 255):
+        blue = 0
 
 #screen size
 Window_width = 800
 Window_height = 600
 
 #draw screen
-# Make surface and display
 Window = pygame.display.set_mode((Window_width, Window_height))
 pygame.display.set_caption("Asteroids")
 
 class Player:
     def __init__(self):
+        pass
 
 
+#bullet variables
+bullet_speed = 10
+bullet_color = Color
 
 class Bullet:
     
@@ -41,8 +54,9 @@ class Bullet:
         self.x = x
         self.y = y
         self.dir = direction
+        self.life = 10
 
-    def updateBullet(self):
+    def Bullet_Fired(self):
             #movement
             self.x += bullet_speed * math.cos(self.dir * math.pi / 180)
             self.y += bullet_speed * math.sin(self.dir * math.pi / 180)
