@@ -1,7 +1,7 @@
 import pygame, sys
 from pygame.locals import *
 pygame.init()
-import time
+
 SCREEN = pygame.display.set_mode((800,600))
 
 color_shade = (170,170,170)
@@ -18,9 +18,17 @@ exit_but=pygame.Rect(305,320,190,70)
 
 class screen:
     x=(800,600)
+       
 class meteor:
     x=5
     y=5
     mudX=0.1
     mudY=0.1
+    
+        
+    def addpoints(self):
+        #super().__init__(position, load_sprite("asteroid"), (0, 0))
+        #add points aqui
+        print("Add points")
 
+    
