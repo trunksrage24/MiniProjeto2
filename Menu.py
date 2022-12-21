@@ -90,4 +90,3 @@ def Menufunc():
 
         pygame.display.update()
 
-Menufunc()
