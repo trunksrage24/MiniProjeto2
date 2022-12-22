@@ -6,9 +6,8 @@ import random
 import time
 pygame.init()
 
-screen_x = 800
-screen_y = 600
-SCREEN = pygame.display.set_mode(screen_x, screen_y)
+
+SCREEN = pygame.display.set_mode((800, 600))
 
 color_shade = (170,170,170)
 color_dark = (100,100,100)
@@ -36,5 +35,3 @@ class meteor:
         #super().__init__(position, load_sprite("asteroid"), (0, 0))
         #add points aqui
         print("Add points")
-
-    

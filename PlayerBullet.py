@@ -34,20 +34,21 @@ if (blue > 255):
     blue = 0
 
 #screen
-SCREEN.fill(Color)
+SCREEN.fill(BLACK)
 
 #player:
 #player image
-image = pygame.image.load('seta.png')
+image = pygame.image.load('sprites/image.png')
 
 #coordenadas e angulos
 ang = 0
-v_pos = [(screen_x / 2), (screen_y / 2)]
+v_pos = [(SCREEN[0] / 2), (SCREEN[1] / 2)]
 v_dir = [-1,-1]
 events = pygame.event.get()
 
 #ciclo principal
-while True:
+aux = True
+while aux:
     for event in pygame.event.get():
         if event.type == QUIT:
             pygame.quit()
@@ -99,10 +100,12 @@ while True:
     Vetor = str(v_pos)
     Angulo = str(angulo_graus)
     Vpos = (v_pos[0], v_pos[1]+16)
-    SCREEN.blit(angle, (Vpos))
+    SCREEN.blit(Vpos)
 
     #update do ecra
     pygame.display.update()
+    aux = False
+
 
 #bullet variables
 bulletSpeed = 10
