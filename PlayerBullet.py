@@ -4,6 +4,8 @@
 #fetch libraries from Imports, where all libraries needed are stored
 from Imports import *
 import numpy as np
+import pygame
+
 
 #colors
 WHITE = (255, 255, 255)
@@ -42,7 +44,8 @@ image = pygame.image.load('sprites/image.png')
 
 #coordenadas e angulos
 ang = 0
-v_pos = [(SCREEN[0] / 2), (SCREEN[1] / 2)]
+v_pos = ((SCREEN.get_height()/2), (SCREEN.get_width()/2))
+  #not working, dont understand
 v_dir = [-1,-1]
 events = pygame.event.get()
 
@@ -83,29 +86,28 @@ while aux:
         print(v_pos)
     if keys[pygame.K_ESCAPE]:
         pygame.quit()
-    
-    #draw
-    pygame.draw.line(SCREEN, WHITE, (400, 0), (400, 600), 4)
-    pygame.draw.line(SCREEN, WHITE, (0,300), (800,300), 4)
-    pygame.draw.line(SCREEN, BLUE, (400,300), v_pos, 4)
-    
-    cnt_y = SCREEN.get_height()/2
-    cnt_x = SCREEN.get_width()/2
-    angulo = np.arctan2(cnt_y - v_pos[1], cnt_x - v_pos[0])
-    angulo_graus = np.degrees(angulo)
-    angulo_graus = np.round(angulo_graus)
-    rotimage = pygame.transform.rotate(image,-angulo_graus)
-    rect = rotimage.get_rect(center=v_pos)
-    SCREEN.blit(rotimage,rect)
-    Vetor = str(v_pos)
-    Angulo = str(angulo_graus)
-    Vpos = (v_pos[0], v_pos[1]+16)
-    SCREEN.blit(Vpos)
 
     #update do ecra
     pygame.display.update()
     aux = False
 
+#draw
+pygame.draw.line(SCREEN, WHITE, (400, 0), (400, 600), 4)
+pygame.draw.line(SCREEN, WHITE, (0,300), (800,300), 4)
+pygame.draw.line(SCREEN, BLUE, (400,300), v_pos, 4)
+
+cnt_y = SCREEN.get_height()/2
+cnt_x = SCREEN.get_width()/2
+angulo = np.arctan2(cnt_y - v_pos[1], cnt_x - v_pos[0])
+angulo_graus = np.degrees(angulo)
+angulo_graus = np.round(angulo_graus)
+rotimage = pygame.transform.rotate(image,-angulo_graus)
+rect = rotimage.get_rect(center=v_pos)
+SCREEN.blit(rotimage,rect)
+Vetor = str(v_pos)
+Angulo = str(angulo_graus)
+Vpos = (v_pos[0], v_pos[1]+16)
+SCREEN.blit(Vpos)
 
 #bullet variables
 bulletSpeed = 10
@@ -115,11 +117,11 @@ bulletTime = 4
 class Bullet:
     def fit_screen(self):    
         #fit in screen
-        if self.x > screen_x:
+        if self.x > SCREEN.get_width():
             self.x = 0
         elif self.x < 0:
-            self.x = screen_x
-        elif self.y > screen_y:
+            self.x = SCREEN.get_width()
+        elif self.y > SCREEN.get_height():
             self.y = 0
         elif self.y < 0:
-            self.y = screen_y
+            self.y = SCREEN.get_height()
