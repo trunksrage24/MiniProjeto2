@@ -28,3 +28,9 @@ João Carvalho
     -fez a leaderboard e escrever no ficheiro
     -fez o Main   
     -fez pequena parte do relatório
+
+Vitor Daniel
+    -fez o sistema de Player
+    -fez sistema de PlayerBullet
+    -fez parte do relatório
+    -fez Player class   
