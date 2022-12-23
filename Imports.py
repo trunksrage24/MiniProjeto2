@@ -27,6 +27,7 @@ class screen:
     x=(800,600)
        
 class meteor:
+    auvar=False
     x=5
     y=5
     mudX=0.1
