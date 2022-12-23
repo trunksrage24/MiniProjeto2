@@ -10,22 +10,23 @@ pygame.init()
 
 
 SCREEN = pygame.display.set_mode((800, 600))
-
+#cores
 color_shade = (170,170,170)
 color_dark = (100,100,100)
 WHITE=(255,255,255)
 RED=(255,0,0)
+#font usada nos butões e Logo em Menu /// e textos e respetivos descrições
 smallfont = pygame.font.SysFont("Corbel",45,True)
 textComets = smallfont.render("COMETS" , True , WHITE)
 textstart = smallfont.render("Start" , True , RED)
 textquit = smallfont.render("Quit" , True , RED)
-
+#coordenadas dos butões
 start_but=pygame.Rect(305,200,190,70)
 exit_but=pygame.Rect(305,320,190,70)
-
+#class para guardar variavel global com tamanho do ecrã
 class screen:
     x=(800,600)
-       
+#class meteor com variaveis com variaveis para CADA meteoro       
 class meteor:
     auvar=False
     x=5
@@ -72,7 +73,7 @@ class meteor:
     mudY18=0.1
 
    
-    
+    #caso o meteoro grande for destruido fica true
     destroyed=False
 
     nx1=0
@@ -127,7 +128,7 @@ class meteor:
 
     #big meteor hp
     hp1=100
-
+    #suposta função para conar pontos
     def addpoints(self):
         #super().__init__(position, load_sprite("asteroid"), (0, 0))
         #add points aqui
