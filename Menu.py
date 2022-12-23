@@ -38,7 +38,7 @@ def Menufunc():
                                         if pygame.mouse.get_pressed()[0] and start_but.collidepoint(pos):
                                                 print("Move on")
                                                 #chama função que começa o jogo
-                                                spawnmeteor()
+                                                #spawnmeteor()
                                                 meteor.auvar=True
                                                 
                                         
@@ -104,3 +104,4 @@ def Menufunc():
 
                 pygame.display.update()
 
+Menufunc()
