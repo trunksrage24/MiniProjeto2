@@ -37,7 +37,8 @@ def Menufunc():
                                         if pygame.mouse.get_pressed()[0] and start_but.collidepoint(pos):
                                                 print("Move on")
                                                 spawnmeteor()
-                                                break
+                                                meteor.auvar=True
+                                                
                                         
                                 #exit button
                                 if exit_but.collidepoint(pos):
