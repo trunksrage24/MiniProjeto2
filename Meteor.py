@@ -250,14 +250,7 @@ def spawnmeteor():
                                         meteor.mudX18=0.1
                                         meteor.mudY18=0.1
         
-#while true para simular este ficheiro para testes
-while True:  
-        for event in pygame.event.get():
-                        #posição do constante mouse    
-                        if event.type==pygame.MOUSEMOTION:
-                                #posição do mouse    
-                                pos=pygame.mouse.get_pos() 
-        SCREEN.fill((0,0,0)) 
-        spawnmeteor()
+
                                      
         pygame.display.update()                
+      
