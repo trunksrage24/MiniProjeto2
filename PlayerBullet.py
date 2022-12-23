@@ -3,12 +3,14 @@
 
 #fetch libraries from Imports, where all libraries needed are stored
 from Imports import *
+import numpy as np
+import pygame
 
-window_width = SCREEN.get_width
 
 #colors
-white = (255, 255, 255)
-black = (0, 0, 0)
+WHITE = (255, 255, 255)
+BLACK = (0, 0, 0)
+BLUE = (0, 0, 255)
 
 #rainbow color variables
 ang = 0
@@ -33,68 +35,93 @@ if (green > 255):
 if (blue > 255):
     blue = 0
 
-#player variables
-playerSpeed = 10
-playerMaxSpeed = 20
-playerMaxRotation = 10
-playerColor = white
-playerSize = 10
+#screen
+SCREEN.fill(BLACK)
 
-class Player:
-    
-        # Check for wrapping
-        if self.x > display_width:
-            self.x = 0
-        elif self.x < 0:
-            self.x = display_width
-        elif self.y > display_height:
-            self.y = 0
-        elif self.y < 0:
-            self.y = display_height
+#player:
+#player image
+image = pygame.image.load('sprites/image.png')
 
-        # Rotate player
-        self.dir += self.rtspd
+#coordenadas e angulos
+ang = 0
+v_pos = ((SCREEN.get_height()/2), (SCREEN.get_width()/2))
+  #not working, dont understand
+v_dir = [-1,-1]
+events = pygame.event.get()
 
-    def drawPlayer(self):
-        ang = math.radians(self.dir)
-        t = self.thrust
-        # Draw player
-        PLAYER = pygame.image.load("Images/Spaceship.png")
-        PLAYER_x = self.x
-        PLAYER_y = self.y
-        
+#ciclo principal
+aux = True
+while aux:
+    for event in pygame.event.get():
+        if event.type == QUIT:
+            pygame.quit()
+            sys.exit()
 
-#player needs image and movement (adapt any good ideas from this code above)
+        if event.type == pygame.KEYDOWN:
+            if event.key == pygame.K_ESCAPE:
+                pygame.quit()
+                sys.exit()
+            if event.key == pygame.K_RIGHT:
+                v_direcao=[1,0]
+            if event.key == pygame.K_LEFT:
+                v_direcao=[-1,0]
+            if event.key == pygame.K_UP:
+                v_direcao=[0,-1]
+            if event.key == pygame.K_DOWN:
+                v_direcao=[0,1]
+
+    #movimento circle
+    keys = pygame.key.get_pressed()
+    if keys[pygame.K_LEFT]:
+        v_pos[0]-=4
+        print(v_pos)
+    if keys[pygame.K_RIGHT]:
+        v_pos[0]+=4
+        print(v_pos)
+    if keys[pygame.K_UP]:
+        v_pos[1]-=4
+        print(v_pos)
+    if keys[pygame.K_DOWN]:
+        v_pos[1]+=4
+        print(v_pos)
+    if keys[pygame.K_ESCAPE]:
+        pygame.quit()
+
+    #update do ecra
+    pygame.display.update()
+    aux = False
+
+#draw
+pygame.draw.line(SCREEN, WHITE, (400, 0), (400, 600), 4)
+pygame.draw.line(SCREEN, WHITE, (0,300), (800,300), 4)
+pygame.draw.line(SCREEN, BLUE, (400,300), v_pos, 4)
+
+cnt_y = SCREEN.get_height()/2
+cnt_x = SCREEN.get_width()/2
+angulo = np.arctan2(cnt_y - v_pos[1], cnt_x - v_pos[0])
+angulo_graus = np.degrees(angulo)
+angulo_graus = np.round(angulo_graus)
+rotimage = pygame.transform.rotate(image,-angulo_graus)
+rect = rotimage.get_rect(center=v_pos)
+SCREEN.blit(rotimage,rect)
+Vetor = str(v_pos)
+Angulo = str(angulo_graus)
+Vpos = (v_pos[0], v_pos[1]+16)
+SCREEN.blit(Vpos)
 
 #bullet variables
 bulletSpeed = 10
 bulletColor = Color
+bulletTime = 4
 
 class Bullet:
-    
-    def __init__(self, x, y, direction):
-        self.x = x
-        self.y = y
-        self.dir = direction
-        self.life = 10
-
-    def Bullet_Fired(self):
-            #movement
-            self.x += bulletSpeed * math.cos(self.dir * math.pi / 180)
-            self.y += bulletSpeed * math.sin(self.dir * math.pi / 180)
-
-            #draw bullet
-            pygame.draw.circle(Window, bulletColor, (int(self.x), int(self.y)), 4)
-
-            #fit in screen
-            if self.x > Window_width:
-                self.x = 0
-            elif self.x < 0:
-                self.x = Window_width
-            elif self.y > Window_height:
-                self.y = 0
-            elif self.y < 0:
-                self.y = Window_height
-            self.life -= 1
-
-
+    def fit_screen(self):    
+        #fit in screen
+        if self.x > SCREEN.get_width():
+            self.x = 0
+        elif self.x < 0:
+            self.x = SCREEN.get_width()
+        elif self.y > SCREEN.get_height():
+            self.y = 0
+        elif self.y < 0:
+            self.y = SCREEN.get_height()

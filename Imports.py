@@ -1,8 +1,13 @@
 import pygame, sys
 from pygame.locals import *
+import math
+import numpy as np
+import random
+import time
 pygame.init()
 
-SCREEN = pygame.display.set_mode((800,600))
+
+SCREEN = pygame.display.set_mode((800, 600))
 
 color_shade = (170,170,170)
 color_dark = (100,100,100)
@@ -73,7 +78,7 @@ class meteor:
     nx4=0
     nx5=0
     nx6=0
-    nx7=0           ##SEM COMENTÁRIOS SOBRE ESTE CÓDIGO HORRIVEL##
+    nx7=0           
     nx8=0
     nx9=0
     nx10=0
@@ -119,10 +124,8 @@ class meteor:
 
     #big meteor hp
     hp1=0
-    
+
     def addpoints(self):
         #super().__init__(position, load_sprite("asteroid"), (0, 0))
         #add points aqui
         print("Add points")
-
-    
