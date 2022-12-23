@@ -2,7 +2,7 @@ import pygame, sys
 from pygame.locals import *
 import random
 from Imports import *
-from Menu import *
+
 pygame.init()
 x=0
 y=0
@@ -156,12 +156,6 @@ def spawnmeteor():
                                         meteor.mudX2=0.1
                                         meteor.mudY6=0.1                
                         
-
-
-
-
-
-
                         if meteor.auxhp<=0 and meteor.auxsmlhp6!=0:
                                 pygame.draw.circle(SCREEN,RED,[meteor.nx12+meteor.mudX8,meteor.nx12-meteor.mudY8],20)
                                 if meteor.nx12+meteor.mudX8>=800 or meteor.nx1-meteor.mudY8>=600:
@@ -241,22 +235,4 @@ def spawnmeteor():
                                 if meteor.nx22+meteor.mudX18 or meteor.nx22-meteor.mudY18>=600:
                                         meteor.nx22=0
                                         meteor.mudX18=0.1
-                                        meteor.mudY18=0.1    
-                        
-                        
-while True:  
-        for event in pygame.event.get():
-        #posição do mouse    
-                if event.type==pygame.MOUSEMOTION:
-                        #posição do mouse    
-                        pos=pygame.mouse.get_pos() 
-
-        SCREEN.fill((0,200,200))
-        
-        
-        
-
-        spawnmeteor()
-
-
-        pygame.display.update()                
+                                        meteor.mudY18=0.1                  
