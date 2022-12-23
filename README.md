@@ -21,16 +21,20 @@ Trabalho realizado por:
     - João Carvalho, nº a22204909
 
 
-João Carvalho
+# João Carvalho
     -fez o ficheiro "Imports"
     -fez o Menu 
     -fez os Meteoros dentro do jogo, incluindo classes
     -fez a leaderboard e escrever no ficheiro
     -fez o Main   
     -fez pequena parte do relatório
+    -fez comentários nos seus respetivos ficheiros
 
-Vitor Daniel
+# Vitor Daniel
     -fez o sistema de Player
     -fez sistema de PlayerBullet
     -fez parte do relatório
     -fez Player class   
+    -fez comentários nos seus respetivos ficheiros
+
+# Arquitetura da solução:
