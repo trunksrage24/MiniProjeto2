@@ -2,6 +2,7 @@ import pygame, sys
 from pygame.locals import *
 import random
 from Imports import *
+from Meteor import *
 pygame.init()
 
 
@@ -35,6 +36,7 @@ def Menufunc():
                                 pygame.display.update()
                                 if pygame.mouse.get_pressed()[0] and start_but.collidepoint(pos):
                                         print("Move on")
+                                        spawnmeteor()
                                 
                         #exit button
                         if exit_but.collidepoint(pos):
