@@ -97,9 +97,9 @@ class meteor:
     nx22=0
 
     #medium meteores hp
-    auxhp=0
-    auxhp1=0
-    auxhp2=10
+    auxhp=40
+    auxhp1=40
+    auxhp2=40
     #small meteores hp
     auxsmlhp1=10
     auxsmlhp2=10
@@ -123,7 +123,7 @@ class meteor:
     auxsmlhp18=10
 
     #big meteor hp
-    hp1=0
+    hp1=100
 
     def addpoints(self):
         #super().__init__(position, load_sprite("asteroid"), (0, 0))
