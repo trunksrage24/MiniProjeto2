@@ -9,6 +9,7 @@ x=0
 y=0
     
 def spawnmeteor():
+        
         if meteor.destroyed==False:
                 meteor.nx1=random.uniform(0.1,500)
 
@@ -67,6 +68,6 @@ def spawnmeteor():
                         meteor.nx7=meteor.nx7+0.1
                         meteor.mudY5=meteor.mudY5+0.1 
                 
-        pygame.draw.circle(screen,color_dark,[x,y],20)
+        #pygame.draw.circle(screen,color_dark,[x,y],20)
 
         pygame.display.update()                
