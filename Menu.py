@@ -6,6 +6,10 @@ from Imports import *
 from Meteor import *
 pygame.init()
 
+#Interstellar Main Theme - Extra Extended - Soundtrack by Hans Zimmer, credits to Cinémavore on Youtube
+pygame.mixer.music.load('music.ogg')
+pygame.mixer.music.play(-1)
+
 #funçao que verifica se meteoro do menu saiu do ecrã
 def outofscreen(c):            
     if c>=screen.x or c<=(0,0):
@@ -38,12 +42,12 @@ def Menufunc():
                                         if pygame.mouse.get_pressed()[0] and start_but.collidepoint(pos):
                                                 print("Move on")
                                                 #chama função que começa o jogo
-                                                #spawnmeteor()
-                                                meteor.auvar=True
+                                                Menufunc()
+                                                #meteor.auvar=True
                                                 
                                         
                                 #exit button
-                                if exit_but.collidepoint(pos):
+                                elif exit_but.collidepoint(pos):
                                         #butão start e o "blit" "acende" o butão quando o rato passa por cima
                                         SCREEN.blit(textquit,(350,335))
                                         pygame.draw.rect(SCREEN,WHITE,(305,320,190,70))

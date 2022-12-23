@@ -1,12 +1,12 @@
 #criated by Vitor Daniel, nº a22204782 and João Carvalho, nº a22204909
 
-import pygame, sys
+import pygame
 from pygame.locals import *
-import math
-import numpy as np
-import random
-import time
 pygame.init()
+
+#Interstellar Main Theme - Extra Extended - Soundtrack by Hans Zimmer, credits to Cinémavore on Youtube
+pygame.mixer.music.load('music.ogg')
+pygame.mixer.music.play(-1)
 
 
 SCREEN = pygame.display.set_mode((800, 600))
@@ -71,7 +71,6 @@ class meteor:
     mudY16=0.5
     mudY17=0.5
     mudY18=0.1
-
    
     #caso o meteoro grande for destruido fica true
     destroyed=False

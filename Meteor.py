@@ -1,9 +1,13 @@
-import pygame, sys
+import pygame
 from pygame.locals import *
 import random
 from Imports import *
 
 pygame.init()
+
+#Interstellar Main Theme - Extra Extended - Soundtrack by Hans Zimmer, credits to Cinémavore on Youtube
+pygame.mixer.music.load('music.ogg')
+pygame.mixer.music.play(-1)
 
 x=0
 y=0

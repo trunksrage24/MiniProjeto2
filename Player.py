@@ -1,7 +1,7 @@
 # program file for Player Movement
 
 from Imports import *
-from Bullet import *
+from Meteor import *
 import numpy as np
 import math
 import pygame
@@ -9,6 +9,10 @@ import pygame
 #configuraçao inicial
 pygame.init()
 Screen = pygame.display.set_mode((800,600))
+
+#Interstellar Main Theme - Extra Extended - Soundtrack by Hans Zimmer, credits to Cinémavore on Youtube
+pygame.mixer.music.load('music.ogg')
+pygame.mixer.music.play(-1)
 
 #cores
 Color1 = 0
@@ -50,7 +54,6 @@ def Player():
         for event in pygame.event.get():
             if event.type == QUIT:
                 pygame.quit()
-                sys.exit()
 
         #comandos player
         keys = pygame.key.get_pressed()
@@ -79,4 +82,17 @@ def Player():
         Screen.blit(rotimage, v_pos)
 
         #update do ecra
-        pygame.display.update()
+        #pygame.display.update()
+        
+def Bullet():
+    bullet_start = (cnt_x, cnt_y)
+    bullet_end = (cnt_x + 800, cnt_y + 400)
+    b_pos = (bullet_start, bullet_end)
+    pygame.draw.circle(Screen, Rainbow, b_pos, 4, 0)
+    if meteor.destroyed == b_pos:
+        meteor.destroyed == True
+    else:
+        meteor.destroyed == False
+
+#update do ecra
+pygame.display.update()
